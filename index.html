@@ -1,65 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For Sophia 💌</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sophia's Letter 💌</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Dancing GIFs -->
-    <img src="left-dancer.gif" alt="Dancer Left" class="dancing-gif left" />
-    <img src="right-dancer.gif" alt="Dancer Right" class="dancing-gif right" />
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>Happy Girlfriends Day Mahal,</strong>
+                        <p>
+                            Even though we know that we are not that official in a sense, I still want to greet you.
+                            I made this short poem nung isang gabi na gusto kong sabihin na sobrang mahal kita —
+                            but yeah, tinula ko na lang nun nung gabing iyon. <br><br>
+                            mwehehehe 😗
+                        </p>
+                        <p><em>
+                            As we have our bond each night,<br>
+                            I can’t help but feel light.<br><br>
 
-    <!-- Envelope -->
-    <div class="envelope-wrapper">
-      <div class="envelope">
-        <div class="flap-top"></div>
-        <div class="flap-bottom"></div>
-        <div class="letter">
-          <div class="text">
-            <p><strong>Happy Girlfriends Day Mahal,</strong></p>
-            <p>
-              Even though we know that we are not that official in a sense, I still want to greet you.  
-              I made this short poem nung isang gabi na gusto kong sabihin na sobrang mahal kita —  
-              but yeah, tinula ko na lang nun nung gabing iyon.  
-              <br /><br />
-              mwehehehe 😗
-            </p>
-            <br />
-            <p><em>
-              As we have our bond each night,<br />
-              I can’t help but feel light.<br /><br />
+                            As I fall in love and feel you in my core,<br>
+                            I don’t know.<br>
+                            but appreciate you more.<br><br>
 
-              As I fall in love and feel you in my core,<br />
-              I don’t know.<br />
-              but appreciate you more.<br /><br />
+                            The unceasing thoughts of you in my mind,<br>
+                            concludes, no other soul I’ll ever find.<br><br>
 
-              The unceasing thoughts of you in my mind,<br />
-              concludes, no other soul I’ll ever find.<br /><br />
+                            The words I can’t help but say,<br>
+                            is a word I can use every day.<br><br>
 
-              The words I can’t help but say,<br />
-              is a word I can use every day.<br /><br />
+                            And as you sleep well and tight,<br>
+                            I’ll say this phrase<br>
+                            because I know I’m right.<br><br>
 
-              And as you sleep well and tight,<br />
-              I’ll say this phrase<br />
-              because I know I’m right.<br /><br />
-
-              Oh my dear Sophia, I love you so so much 😔
-            </em></p>
-          </div>
+                            Oh my dear Sophia, I love you so so much 😔
+                        </em></p>
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+            <img src="./assets/left-hearts.gif" class="gif left">
+            <img src="./assets/right-hearts.gif" class="gif right">
         </div>
-      </div>
-      <div class="heart"></div>
     </div>
-  </div>
 
-  <script>
-    const envelope = document.querySelector('.envelope-wrapper');
-    envelope.addEventListener('click', () => {
-      envelope.classList.toggle('flap');
-    });
-  </script>
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+        });
+    </script>
 </body>
 </html>
