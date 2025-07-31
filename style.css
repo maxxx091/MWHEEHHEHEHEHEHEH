@@ -1,173 +1,158 @@
-/* Global styling */
+:root {
+  --primary: #fff;
+  --bg-color: #ffe5b4; /* Light orange override */
+  --bg-envelope-color: #f5edd1;
+  --envelope-tab: #ecdeb8;
+  --envelope-cover: #e6cfa7;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --txt-color: #444;
+  --heart-color: rgb(252, 8, 231);
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #ffe5b4; /* Light orange */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  background: var(--bg-color);
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
   overflow: hidden;
-}
-
-/* Container */
-.container {
-  position: relative;
-  max-width: 1000px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Dancing GIFs */
 .dancing-gif {
   position: absolute;
-  width: 80px;
-  height: auto;
   top: 50%;
+  width: 100px;
+  height: auto;
   transform: translateY(-50%);
   z-index: 0;
   pointer-events: none;
 }
 
 .dancing-gif.left {
-  left: -100px;
+  left: 10px;
 }
 
 .dancing-gif.right {
-  right: -100px;
+  right: 10px;
 }
 
-/* Envelope wrapper */
-.envelope-wrapper {
-  position: relative;
-  width: 350px;
-  height: 250px;
-  perspective: 1000px;
-  cursor: pointer;
-  z-index: 2;
-}
-
-/* Envelope base */
-.envelope {
-  width: 100%;
-  height: 100%;
-  background: #fffaf0;
-  border: 2px solid #ff9f43;
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+/* Envelope Container */
+.container {
+  height: 100vh;
+  display: grid;
+  place-items: center;
   z-index: 1;
 }
 
-/* Flaps as triangles */
-.flap-top,
-.flap-bottom {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 175px solid transparent;
-  border-right: 175px solid transparent;
-  z-index: 4;
-  transition: transform 0.6s ease;
+.container > .envelope-wrapper {
+  background: var(--bg-envelope-color);
+  box-shadow: 0 0 40px var(--shadow-color);
+  cursor: pointer;
 }
 
-.flap-top {
-  top: 0;
-  border-bottom: 125px solid #ff9f43; /* top triangle */
-  transform-origin: top center;
+/* Envelope + Letter */
+.envelope-wrapper > .envelope {
+  position: relative;
+  width: 300px;
+  height: 230px;
 }
 
-.flap-bottom {
-  bottom: 0;
-  border-top: 125px solid #ff9f43; /* bottom triangle */
-  transform-origin: bottom center;
-}
-
-/* Letter content */
-.letter {
+.envelope-wrapper > .envelope::before {
+  content: "";
   position: absolute;
   top: 0;
-  left: 5%;
-  width: 90%;
-  height: 90%;
-  background: white;
-  padding: 20px;
-  overflow-y: auto;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1.6;
-  transform: translateY(40%);
-  transition: transform 0.8s ease;
   z-index: 2;
+  border-top: 130px solid var(--envelope-tab);
+  border-right: 150px solid transparent;
+  border-left: 150px solid transparent;
+  transform-origin: top;
+  transition: all 0.5s ease-in-out 0.7s;
 }
 
-/* Reveal letter and open flaps */
-.flap .letter {
-  transform: translateY(-120%);
+.envelope-wrapper > .envelope::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 0px;
+  height: 0px;
+  border-top: 130px solid transparent;
+  border-right: 150px solid var(--envelope-cover);
+  border-bottom: 100px solid var(--envelope-cover);
+  border-left: 150px solid var(--envelope-cover);
 }
 
-.flap .flap-top {
-  transform: rotateX(-120deg);
+/* Letter Style */
+.envelope > .letter {
+  position: absolute;
+  right: 20%;
+  bottom: 0;
+  width: 54%;
+  height: 80%;
+  background: var(--primary);
+  text-align: center;
+  transition: all 1s ease-in-out;
+  box-shadow: 0 0 5px var(--shadow-color);
+  padding: 20px 10px;
+  overflow-y: auto;
 }
 
-.flap .flap-bottom {
-  transform: rotateX(120deg);
+.envelope > .letter > .text {
+  color: var(--txt-color);
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.6;
 }
 
-/* Letter text */
-.text {
-  color: #333;
-}
-
-/* Heart element */
+/* Heart Seal */
 .heart {
   position: absolute;
-  bottom: -25px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  background: red;
-  clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0% 35%);
-  animation: pulse 1.5s infinite;
-  z-index: 5;
+  width: 15px;
+  height: 15px;
+  background: var(--heart-color);
+  z-index: 4;
+  transform: translate(-50%, -20%) rotate(45deg);
+  transition: transform 0.5s ease-in-out 1s;
+  box-shadow: 0 1px 6px var(--shadow-color);
+  cursor: pointer;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1) translateX(-50%); }
-  50% { transform: scale(1.1) translateX(-50%); }
-  100% { transform: scale(1) translateX(-50%); }
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: var(--heart-color);
+  border-radius: 50%;
 }
 
-/* Mobile responsiveness */
-@media screen and (max-width: 768px) {
-  .envelope-wrapper {
-    width: 280px;
-    height: 200px;
-  }
+.heart:before {
+  top: -7.5px;
+}
 
-  .dancing-gif {
-    width: 60px;
-  }
+.heart:after {
+  right: 7.5px;
+}
 
-  .dancing-gif.left {
-    left: -70px;
-  }
+/* Envelope Animation */
+.flap > .envelope:before {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
 
-  .dancing-gif.right {
-    right: -70px;
-  }
+.flap > .envelope > .letter {
+  bottom: 100px;
+  transform: scale(1.5);
+  transition-delay: 1s;
+}
 
-  .letter {
-    font-size: 13px;
-  }
-
-  .heart {
-    width: 30px;
-    height: 30px;
-  }
+.flap > .heart {
+  transform: rotate(90deg);
+  transition-delay: 0.4s;
 }
