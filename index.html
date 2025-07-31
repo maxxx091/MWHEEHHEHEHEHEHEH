@@ -1,34 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Envelope + Letter (Open/Close on Click)</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Sophia 💌</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="envelope-wrapper">
-            <div class="envelope">
-                <div class="letter">
-                    <div class="text">
-                        <strong>Dear Person.</strong>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Numquam labore omnis minus maiores laboriosam, facere in beatae esse. 
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="heart"></div>
+  <div class="container">
+    <!-- Dancing GIFs -->
+    <img src="left-dancer.gif" alt="Dancing GIF Left" class="dancing-gif left" />
+    <img src="right-dancer.gif" alt="Dancing GIF Right" class="dancing-gif right" />
+
+    <!-- Envelope -->
+    <div class="envelope-wrapper" id="envelope">
+      <div class="envelope">
+        <div class="letter">
+          <div class="text">
+            <p><strong>Happy Girlfriends Day Mahal,</strong></p>
+            <p>
+              Even though we know that we are not that official in a sense, I still want to greet you.  
+              I made this short poem nung isang gabi na gusto kong sabihin na sobrang mahal kita —  
+              but yeah, tinula ko na lang nun nung gabing iyon kasi tulog ka HAHAHA.  
+              <br /><br />
+              mwehehehe 😗
+            </p>
+            <br />
+            <p><em>
+              As we have our bond each night,<br />
+              I can’t help but feel light.<br /><br />
+
+              As I fall in love and feel you in my core,<br />
+              I don’t know.<br />
+              but appreciate you more.<br /><br />
+
+              The unceasing thoughts of you in my mind,<br />
+              concludes, no other soul I’ll ever find.<br /><br />
+
+              The words I can’t help but say,<br />
+              is a word I can use every day.<br /><br />
+
+              And as you sleep well and tight,<br />
+              I’ll say this phrase<br />
+              because I know I’m right.<br /><br />
+
+              Oh my dear Sophia, I love you so so much 😔
+            </em></p>
+          </div>
         </div>
+      </div>
+      <div class="heart" id="heart"></div>
     </div>
-    <script>
-        const envelope = document.querySelector('.envelope-wrapper');
-        envelope.addEventListener('click', () => {
-            envelope.classList.toggle('flap');
-        });
-    </script>
+  </div>
+
+  <script>
+    const envelope = document.getElementById("envelope");
+    const heart = document.getElementById("heart");
+
+    heart.addEventListener("click", () => {
+      envelope.classList.toggle("flap");
+    });
+  </script>
 </body>
 </html>
