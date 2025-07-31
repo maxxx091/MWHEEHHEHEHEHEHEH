@@ -2,59 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For Sophia 💌</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Letter for Sophia 💌</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <img src="left-dancer.gif" alt="Dancer Left" class="dancing-gif left" />
-  <img src="right-dancer.gif" alt="Dancer Right" class="dancing-gif right" />
-
   <div class="container">
-    <div class="envelope-wrapper">
+    <img src="left-dancer.gif" alt="" class="dancing-gif left" aria-hidden="true" />
+    
+    <div class="envelope-wrapper" id="envelope">
       <div class="envelope">
         <div class="letter">
           <div class="text">
-            <p><strong>Happy Girlfriends Day Mahal,</strong></p>
+            <strong>Sa aking minamahal na Sofii,</strong>
             <p>
-              Even though we know that we are not that official in a sense, I still want to greet you.  
-              I made this short poem nung isang gabi na gusto kong sabihin na sobrang mahal kita —  
-              but yeah, tinula ko na lang nun nung gabing iyon.  
-              <br /><br />
-              mwehehehe 😗
+              I know that we’re not “official” pa in a usual sense but I understand — and you also understand — the circumstances we have right now.
             </p>
-            <br />
+            <p>
+              Since it’s Girlfriends Day, I just wanna show a poem I wrote nung isang gabi na gustong kong sabihing ang salitang <em>“ily.”</em>
+            </p>
             <p><em>
-              As we have our bond each night,<br />
-              I can’t help but feel light.<br /><br />
-
-              As I fall in love and feel you in my core,<br />
-              I don’t know.<br />
-              but appreciate you more.<br /><br />
-
-              The unceasing thoughts of you in my mind,<br />
-              concludes, no other soul I’ll ever find.<br /><br />
-
-              The words I can’t help but say,<br />
-              is a word I can use every day.<br /><br />
-
-              And as you sleep well and tight,<br />
-              I’ll say this phrase<br />
-              because I know I’m right.<br /><br />
-
+              As we have our bond each night,<br>
+              I can’t help but feel light.<br><br>
+              As I fall in love and feel you in my core,<br>
+              I don’t know.<br>
+              but appreciate you more.<br><br>
+              The unceasing thoughts of you in my mind,<br>
+              concludes, no other soul I’ll ever find.<br><br>
+              The words I can’t help but say,<br>
+              is a word I can use every day.<br><br>
+              And as you sleep well and tight,<br>
+              I’ll say this phrase<br>
+              because I know I’m right.<br><br>
               Oh my dear Sophia, I love you so so much 😔
             </em></p>
+            <p style="text-align: right;">– Mak</p>
           </div>
         </div>
       </div>
       <div class="heart"></div>
     </div>
+
+    <img src="right-dancer.gif" alt="" class="dancing-gif right" aria-hidden="true" />
   </div>
 
   <script>
-    const envelope = document.querySelector('.envelope-wrapper');
+    const envelope = document.getElementById('envelope');
     envelope.addEventListener('click', () => {
-      envelope.classList.toggle('flap');
+      envelope.classList.toggle('open');
     });
   </script>
 </body>
