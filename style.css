@@ -1,4 +1,4 @@
-/* Overall page styling */
+/* Global styling */
 body {
   margin: 0;
   padding: 0;
@@ -14,7 +14,6 @@ body {
 /* Container */
 .container {
   position: relative;
-  width: 100%;
   max-width: 1000px;
   display: flex;
   justify-content: center;
@@ -50,7 +49,7 @@ body {
   z-index: 2;
 }
 
-/* Envelope */
+/* Envelope base */
 .envelope {
   width: 100%;
   height: 100%;
@@ -60,38 +59,34 @@ body {
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
-/* Flaps */
+/* Flaps as triangles */
 .flap-top,
 .flap-bottom {
   position: absolute;
-  width: 100%;
-  height: 50%;
-  background: #fffaf0;
-  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 175px solid transparent;
+  border-right: 175px solid transparent;
+  z-index: 4;
   transition: transform 0.6s ease;
-  transform-origin: top;
-  z-index: 3;
 }
 
 .flap-top {
   top: 0;
-  border-bottom: 2px solid #ff9f43;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-bottom: 125px solid #ff9f43; /* top triangle */
+  transform-origin: top center;
 }
 
 .flap-bottom {
   bottom: 0;
-  height: 50%;
-  border-top: 2px solid #ff9f43;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  transform-origin: bottom;
+  border-top: 125px solid #ff9f43; /* bottom triangle */
+  transform-origin: bottom center;
 }
 
-/* Letter */
+/* Letter content */
 .letter {
   position: absolute;
   top: 0;
@@ -105,38 +100,12 @@ body {
   border-radius: 6px;
   font-size: 14px;
   line-height: 1.6;
-  transform: translateY(0);
+  transform: translateY(40%);
   transition: transform 0.8s ease;
-  z-index: 1;
+  z-index: 2;
 }
 
-/* Text inside letter */
-.text {
-  color: #333;
-}
-
-/* Heart */
-.heart {
-  position: absolute;
-  bottom: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  background: red;
-  clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0% 35%);
-  animation: pulse 1.5s infinite;
-  z-index: 3;
-}
-
-/* Pulse animation */
-@keyframes pulse {
-  0% { transform: scale(1) translateX(-50%); }
-  50% { transform: scale(1.1) translateX(-50%); }
-  100% { transform: scale(1) translateX(-50%); }
-}
-
-/* Envelope open effect */
+/* Reveal letter and open flaps */
 .flap .letter {
   transform: translateY(-120%);
 }
@@ -149,7 +118,32 @@ body {
   transform: rotateX(120deg);
 }
 
-/* Responsive */
+/* Letter text */
+.text {
+  color: #333;
+}
+
+/* Heart element */
+.heart {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: red;
+  clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0% 35%);
+  animation: pulse 1.5s infinite;
+  z-index: 5;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1) translateX(-50%); }
+  50% { transform: scale(1.1) translateX(-50%); }
+  100% { transform: scale(1) translateX(-50%); }
+}
+
+/* Mobile responsiveness */
 @media screen and (max-width: 768px) {
   .envelope-wrapper {
     width: 280px;
