@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For Sophia 💌</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <!-- Dancing GIFs -->
-    <img src="left-dancer.gif" alt="Dancing GIF Left" class="dancing-gif left" />
-    <img src="right-dancer.gif" alt="Dancing GIF Right" class="dancing-gif right" />
+    <img src="left-dancer.gif" alt="Dancer Left" class="dancing-gif left" />
+    <img src="right-dancer.gif" alt="Dancer Right" class="dancing-gif right" />
 
     <!-- Envelope -->
-    <div class="envelope-wrapper" id="envelope">
+    <div class="envelope-wrapper">
       <div class="envelope">
         <div class="letter">
           <div class="text">
@@ -21,7 +21,7 @@
             <p>
               Even though we know that we are not that official in a sense, I still want to greet you.  
               I made this short poem nung isang gabi na gusto kong sabihin na sobrang mahal kita —  
-              but yeah, tinula ko na lang nun nung gabing iyon kasi tulog ka HAHAHA.  
+              but yeah, tinula ko na lang nun nung gabing iyon kasi tulog kana HAHAHAHA.  
               <br /><br />
               mwehehehe 😗
             </p>
@@ -49,16 +49,14 @@
           </div>
         </div>
       </div>
-      <div class="heart" id="heart"></div>
+      <div class="heart"></div>
     </div>
   </div>
 
   <script>
-    const envelope = document.getElementById("envelope");
-    const heart = document.getElementById("heart");
-
-    heart.addEventListener("click", () => {
-      envelope.classList.toggle("flap");
+    const envelope = document.querySelector('.envelope-wrapper');
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('flap');
     });
   </script>
 </body>
