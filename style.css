@@ -1,113 +1,81 @@
 :root {
   --primary: #fff;
-  --bg-color: #ffe5b4; /* Light orange override */
-  --bg-envelope-color: #f5edd1;
-  --envelope-tab: #ecdeb8;
-  --envelope-cover: #e6cfa7;
-  --shadow-color: rgba(0, 0, 0, 0.2);
-  --txt-color: #444;
-  --heart-color: rgb(252, 8, 231);
+  --bg-color: #ffe5b4; /* light orange */
+  --envelope-color: #f5edd1;
+  --tab-color: #ecdeb8;
+  --cover-color: #e6cfa7;
+  --text-color: #444;
+  --heart-color: hotpink;
+  --shadow: rgba(0, 0, 0, 0.2);
 }
 
 body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   background: var(--bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Dancing GIFs */
-.dancing-gif {
-  position: absolute;
-  top: 50%;
-  width: 100px;
-  height: auto;
-  transform: translateY(-50%);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.dancing-gif.left {
-  left: 10px;
-}
-
-.dancing-gif.right {
-  right: 10px;
-}
-
-/* Envelope Container */
-.container {
   height: 100vh;
+  font-family: sans-serif;
+}
+
+.container {
   display: grid;
   place-items: center;
-  z-index: 1;
 }
 
-.container > .envelope-wrapper {
-  background: var(--bg-envelope-color);
-  box-shadow: 0 0 40px var(--shadow-color);
+.envelope-wrapper {
+  background: var(--envelope-color);
+  box-shadow: 0 0 20px var(--shadow);
   cursor: pointer;
 }
 
-/* Envelope + Letter */
-.envelope-wrapper > .envelope {
+.envelope {
   position: relative;
   width: 300px;
   height: 230px;
 }
 
-.envelope-wrapper > .envelope::before {
+.envelope::before {
   content: "";
   position: absolute;
   top: 0;
   z-index: 2;
-  border-top: 130px solid var(--envelope-tab);
+  border-top: 130px solid var(--tab-color);
   border-right: 150px solid transparent;
   border-left: 150px solid transparent;
+  transition: transform 0.5s ease-in-out;
   transform-origin: top;
-  transition: all 0.5s ease-in-out 0.7s;
 }
 
-.envelope-wrapper > .envelope::after {
+.envelope::after {
   content: "";
   position: absolute;
-  z-index: 2;
-  width: 0px;
-  height: 0px;
+  z-index: 1;
+  width: 0;
+  height: 0;
   border-top: 130px solid transparent;
-  border-right: 150px solid var(--envelope-cover);
-  border-bottom: 100px solid var(--envelope-cover);
-  border-left: 150px solid var(--envelope-cover);
+  border-right: 150px solid var(--cover-color);
+  border-bottom: 100px solid var(--cover-color);
+  border-left: 150px solid var(--cover-color);
 }
 
-/* Letter Style */
-.envelope > .letter {
+.letter {
   position: absolute;
-  right: 20%;
   bottom: 0;
-  width: 54%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
   height: 80%;
   background: var(--primary);
-  text-align: center;
-  transition: all 1s ease-in-out;
-  box-shadow: 0 0 5px var(--shadow-color);
-  padding: 20px 10px;
-  overflow-y: auto;
-}
-
-.envelope > .letter > .text {
-  color: var(--txt-color);
-  text-align: left;
+  box-shadow: 0 0 5px var(--shadow);
+  padding: 10px;
   font-size: 11px;
-  line-height: 1.6;
+  color: var(--text-color);
+  text-align: left;
+  transition: all 1s ease-in-out;
 }
 
-/* Heart Seal */
 .heart {
   position: absolute;
   top: 50%;
@@ -115,44 +83,40 @@ body {
   width: 15px;
   height: 15px;
   background: var(--heart-color);
-  z-index: 4;
-  transform: translate(-50%, -20%) rotate(45deg);
-  transition: transform 0.5s ease-in-out 1s;
-  box-shadow: 0 1px 6px var(--shadow-color);
-  cursor: pointer;
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: 3;
+  transition: transform 0.5s ease-in-out;
 }
 
-.heart:before,
-.heart:after {
+.heart::before,
+.heart::after {
   content: "";
   position: absolute;
   width: 15px;
   height: 15px;
-  background-color: var(--heart-color);
+  background: var(--heart-color);
   border-radius: 50%;
 }
 
-.heart:before {
+.heart::before {
   top: -7.5px;
 }
 
-.heart:after {
-  right: 7.5px;
+.heart::after {
+  left: 7.5px;
 }
 
-/* Envelope Animation */
-.flap > .envelope:before {
+/* Open Animation */
+.flap .envelope::before {
   transform: rotateX(180deg);
   z-index: 0;
 }
 
-.flap > .envelope > .letter {
+.flap .letter {
   bottom: 100px;
-  transform: scale(1.5);
-  transition-delay: 1s;
+  transform: translateX(-50%) scale(1.2);
 }
 
-.flap > .heart {
-  transform: rotate(90deg);
-  transition-delay: 0.4s;
+.flap .heart {
+  transform: rotate(90deg) translate(-50%, -50%);
 }
